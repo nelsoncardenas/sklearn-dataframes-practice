@@ -1,0 +1,91 @@
+# this config was created due to problems with long parameters on mlflow run commands,
+# for instance, when using the dictionary of columns it gives this results:
+# ´mlflow.exceptions.MlflowException: Param value {something} 'had length 2040,
+# which exceeded length limit of 500'´
+################################################################
+target_column: "loan_status"
+# value considered as positive result (it must be the minority class)
+positive_label_value: "Charged Off"
+# column types for the project.
+data_types: ["txt", "cat", "num"]
+# configuration for the imputer
+imputer:
+  categorical_mode: "mode"
+  numerical_mode: "median"
+# dictionary with key per kind of column and values as list of column names.
+#  'numerical_columns', 'text_columns', 'categorical_mode', and 'numerical_mode'
+train_columns_by_type:
+  # text columns
+  text_columns: ["emp_title", "title"]
+  categorical_columns:
+    [
+      "addr_state",
+      "application_type",
+      "disbursement_method",
+      "emp_length",
+      "home_ownership",
+      "initial_list_status",
+      "purpose",
+      "term",
+      "verification_status",
+    ]
+  numerical_columns:
+    [
+      "acc_now_delinq",
+      "acc_open_past_24mths",
+      "all_util",
+      "annual_inc",
+      "avg_cur_bal",
+      "bc_open_to_buy",
+      "bc_util",
+      "chargeoff_within_12_mths",
+      "collections_12_mths_ex_med",
+      "delinq_2yrs",
+      "delinq_amnt",
+      "dti",
+      "fico_range_high",
+      "fico_range_low",
+      "il_util",
+      "inq_fi",
+      "inq_last_12m",
+      "inq_last_6mths",
+      "installment",
+      "loan_amnt",
+      "max_bal_bc",
+      "mo_sin_old_il_acct",
+      "mo_sin_old_rev_tl_op",
+      "mo_sin_rcnt_rev_tl_op",
+      "mo_sin_rcnt_tl",
+      "mort_acc",
+      "mths_since_last_delinq",
+      "mths_since_rcnt_il",
+      "mths_since_recent_bc",
+      "mths_since_recent_inq",
+      "mths_since_recent_revol_delinq",
+      "num_accts_ever_120_pd",
+      "num_actv_rev_tl",
+      "num_bc_tl",
+      "num_il_tl",
+      "num_op_rev_tl",
+      "num_sats",
+      "num_tl_90g_dpd_24m",
+      "open_acc_6m",
+      "open_act_il",
+      "open_il_12m",
+      "open_il_24m",
+      "open_rv_12m",
+      "open_rv_24m",
+      "pct_tl_nvr_dlq",
+      "percent_bc_gt_75",
+      "pub_rec",
+      "pub_rec_bankruptcies",
+      "revol_bal",
+      "revol_util",
+      "tot_coll_amt",
+      "tot_hi_cred_lim",
+      "total_acc",
+      "total_bal_ex_mort",
+      "total_bal_il",
+      "total_cu_tl",
+      "total_rev_hi_lim",
+    ]

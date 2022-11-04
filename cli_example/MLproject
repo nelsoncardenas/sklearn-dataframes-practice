@@ -1,0 +1,17 @@
+name: pre_processing
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      path-train-test:
+        type: str
+      path-model:
+        type: str
+      random-state:
+        type: str
+
+    command: >-
+      python run.py --path-train-test {path-train-test} \
+                    --path-model {path-model} \
+                    --random-state {random-state}

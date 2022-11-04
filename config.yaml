@@ -1,0 +1,19 @@
+main:
+  steps: all
+  random_state: 42
+eda:
+  drop_col_null_above_percentage: 70
+fetch_data:
+  dvc_remote: "s3_input_remote"
+pre_processing:
+  input_artifact: "1_fetch_data/output/accepted_2007_to_2018Q4.csv"
+  output_artifact: "2_pre_processing/output/clean_data.csv"
+## YOUR CODE HERE
+## include parameters for aditional components.
+data_segregation:
+  path_preprocess: "2_pre_processing/output/clean_data.csv"
+  path_train_test: "3_data_segregation/output/{split}.csv"
+  train_size: 0.94
+train:
+  path_model: "output/model.pkl"
+  target_column: "loan_status"

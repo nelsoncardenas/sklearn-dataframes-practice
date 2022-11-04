@@ -1,0 +1,18 @@
+name: env_model_centric
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10.6
+  - pip=22.2.2
+  - hydra-core=1.2.0
+  - dask=2022.8.1
+  - black=22.6.0
+  - flake8=5.0.4
+  - jupyter=1.0.0
+  - scikit-learn=1.1.2
+  - seaborn=0.12.0
+  - pip:
+      - mlflow==1.28.0
+      - dvc==2.23.0
+      - dvc-s3==2.19.0
