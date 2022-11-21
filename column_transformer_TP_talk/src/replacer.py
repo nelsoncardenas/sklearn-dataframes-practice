@@ -7,10 +7,10 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 class Replacer(BaseEstimator, TransformerMixin):
     def __init__(self, mapper: Dict) -> None:
-        self._mapper = mapper
+        self.mapper = mapper
 
     def _replace_values(self, df: pd.DataFrame) -> pd.DataFrame:
-        for column, mapping_dict in self._mapper.items():
+        for column, mapping_dict in self.mapper.items():
             df.loc[:, column] = df.loc[:, column].replace(mapping_dict)
         return df
 
