@@ -1,0 +1,7 @@
+name: col_tranf_env
+dependencies:
+  - python~=3.9
+  - ipykernel
+  - pip
+  - pip:
+    - -r requirements.txt
