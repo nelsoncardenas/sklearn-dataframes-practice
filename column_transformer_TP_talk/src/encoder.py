@@ -37,8 +37,9 @@ class OneHotDataFrameEncoder(OneHotEncoder):
         Returns:
             StandardDataFrameScaler: instance fitted.
         """
-        self.ohe_scaler = super().fit(X)
+        super().fit(X)
         self.column_names = X.columns
+        self.feature_names = super().get_feature_names_out()
         return self
 
     def transform(self, X: pd.DataFrame) -> pd.DataFrame:
@@ -48,13 +49,16 @@ class OneHotDataFrameEncoder(OneHotEncoder):
         Returns:
             pd.DataFrame: scaled data.
         """
-        assert str(X.columns) == str(self.column_names), (
-            f"Columns don't have same order/elements. "
-            f"Valid order: {self.column_names}"
+        assert str(X.columns) == str(
+            self.column_names
+        ), "Columns don't have same order/elements. Valid "
+        f"order: {self.column_names}"
+
+        X_encoded = super().transform(X)
+
+        return pd.DataFrame(
+            X_encoded.toarray().astype("int8"), columns=self.feature_names
         )
 
-        X_scaled = self.ohe_scaler.transform(X)
-        return pd.DataFrame(X_scaled, columns=self.column_names)
-
     def get_feature_names_out(self, input_features=None):
-        return self.column_names
+        return self.feature_names

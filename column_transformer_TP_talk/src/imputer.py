@@ -40,7 +40,7 @@ class SimpleDataFrameImputer(SimpleImputer):
         Args:
             X (pd.DataFrame): input data
         """
-        self.imputer = super().fit(X)
+        super().fit(X)
         self.column_names = X.columns
         return self
 
@@ -56,7 +56,7 @@ class SimpleDataFrameImputer(SimpleImputer):
             f"Valid order: {self.column_names}"
         )
 
-        X_scaled = self.imputer.transform(X)
+        X_scaled = super().transform(X)
         return pd.DataFrame(X_scaled, columns=self.column_names)
 
     def get_feature_names_out(self, input_features=None):
