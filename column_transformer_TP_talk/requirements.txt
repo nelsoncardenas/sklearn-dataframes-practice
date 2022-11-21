@@ -4,3 +4,4 @@ numpy
 sckit-learn
 feature-engine
 lightgbm
+notebook
