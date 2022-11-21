@@ -10,7 +10,7 @@ class HighCardinalityDroppper(BaseEstimator, TransformerMixin):
         self.threshold = threshold
         self.exclude = exclude
 
-    def _columns_dropper(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _columns_dropper(self, df: pd.DataFrame) -> None:
         nrows = df.shape[0]
 
         num_uniques = df.nunique().to_frame(name="num_uniques")
@@ -29,8 +29,6 @@ class HighCardinalityDroppper(BaseEstimator, TransformerMixin):
 
         self.selected_columns = df.columns.difference(columns_to_drop)
 
-        return df[self.selected_columns]
-
     def get_columns(self) -> List:
         return self.selected_columns.tolist()
 
@@ -39,6 +37,7 @@ class HighCardinalityDroppper(BaseEstimator, TransformerMixin):
         Args:
             df (pd.DataFrame): input data
         """
+        self._columns_dropper(X)
         return self
 
     def transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
@@ -48,5 +47,4 @@ class HighCardinalityDroppper(BaseEstimator, TransformerMixin):
         Returns:
             pd.DataFrame: Dataframe with imputed values.
         """
-        df = self._columns_dropper(X)
-        return df
+        return X[self.selected_columns]
