@@ -3,3 +3,4 @@ pandas
 numpy
 sckit-learn
 feature-engine
+lightgbm

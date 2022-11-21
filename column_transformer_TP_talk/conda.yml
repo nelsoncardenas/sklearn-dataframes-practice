@@ -1,7 +1,11 @@
 name: col_tranf_env
+channels:
+  - conda-forge
+  - defaults
 dependencies:
   - python~=3.9
   - ipykernel
+  - lightgbm
   - pip
   - pip:
     - -r requirements.txt
