@@ -128,3 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 *.DS_Store
+
+# Data sets
+*.csv
+*.zip
+client_code.py
