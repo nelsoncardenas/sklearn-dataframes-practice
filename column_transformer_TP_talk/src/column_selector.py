@@ -6,6 +6,13 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 
 class ColumnSelector(BaseEstimator, TransformerMixin):
+    """Filters the specified columns.
+
+    Attributes:
+        - selected_columns (list): list of columns which will be used for the
+        Machine Learning model.
+    """
+
     def __init__(self, selected_columns: List) -> None:
         self.selected_columns = selected_columns
 

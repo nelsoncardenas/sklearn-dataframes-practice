@@ -6,7 +6,12 @@ from sklearn.impute import SimpleImputer
 
 
 class SimpleDataFrameImputer(SimpleImputer):
-    """Imputes null values in the input data."""
+    """Imputes null values in the input data.
+
+    Check the scikit-learn official documentation for further information about
+    the input parameters:
+    https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html
+    """  # noqa
 
     def __init__(
         self,

@@ -6,6 +6,12 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 
 class DateCoercion(BaseEstimator, TransformerMixin):
+    """Cast date columns from objects/str to datetime.
+
+    Attributes:
+        - date_columns (list): list of columns wto be casted.
+    """
+
     def __init__(self, date_columns: List) -> None:
         self.date_columns = date_columns
 

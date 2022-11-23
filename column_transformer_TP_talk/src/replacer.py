@@ -6,6 +6,14 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 
 class Replacer(BaseEstimator, TransformerMixin):
+    """Replace values per column.
+
+    Attributes:
+        - mapper (Dict): a dict of dictionaries whose keys are the column
+        names. The values are dictionaries whose keys are the original values
+        to be replaced and the values are the new assigned ones.
+    """
+
     def __init__(self, mapper: Dict) -> None:
         self.mapper = mapper
 

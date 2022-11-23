@@ -6,6 +6,15 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 
 class HighCardinalityDroppper(BaseEstimator, TransformerMixin):
+    """Drops high cardinality columns.
+
+    Attributes:
+        - threshold (float): numbers unique categories allowed per column
+        expressed as the fraction respect to the number of rows.
+        - exclude (list): list of columns which won't pass through this
+        estimator.
+    """
+
     def __init__(self, threshold: float = 0.9, exclude: List = []) -> None:
         self.threshold = threshold
         self.exclude = exclude
@@ -29,13 +38,18 @@ class HighCardinalityDroppper(BaseEstimator, TransformerMixin):
 
         self.selected_columns = df.columns.difference(columns_to_drop)
 
-    def get_columns(self) -> List:
+    def get_columns(self) -> List[str]:
+        """Gets the list of remaining columns after the estimator is applied.
+
+        Returns:
+            List[str]: list of non-dropped columns.
+        """
         return self.selected_columns.tolist()
 
     def fit(self, X: pd.DataFrame, y=None):
         """Fits the values to replace by using 'transform' method.
         Args:
-            df (pd.DataFrame): input data
+            X (pd.DataFrame): input data
         """
         self._columns_dropper(X)
         return self
@@ -43,7 +57,7 @@ class HighCardinalityDroppper(BaseEstimator, TransformerMixin):
     def transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         """Executes the methods to transform each type of column.
         Args:
-            df (pd.DataFrame): input dataframe
+            X (pd.DataFrame): input dataframe
         Returns:
             pd.DataFrame: Dataframe with imputed values.
         """

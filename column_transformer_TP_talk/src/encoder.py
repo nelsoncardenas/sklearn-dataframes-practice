@@ -7,6 +7,13 @@ from sklearn.preprocessing import OneHotEncoder
 
 
 class OneHotDataFrameEncoder(OneHotEncoder):
+    """Encode categorical features as a one-hot numeric array.
+
+    Check the scikit-learn official documentation for further information about
+    the input parameters:
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+    """  # noqa
+
     def __init__(
         self,
         categories: str = "auto",

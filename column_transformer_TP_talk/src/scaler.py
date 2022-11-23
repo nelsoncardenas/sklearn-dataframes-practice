@@ -4,7 +4,12 @@ from sklearn.preprocessing import StandardScaler
 
 
 class StandardDataFrameScaler(StandardScaler):
-    """Scales and keeps column names from input DataFrame using StandardScaler."""
+    """Scales and keeps column names from input DataFrame using StandardScaler.
+
+    Check the scikit-learn official documentation for further information about
+    the input parameters:
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html
+    """  # noqa
 
     def __init__(self, copy=True, with_mean=True, with_std=True) -> None:
         """Initializes the standard scaler."""

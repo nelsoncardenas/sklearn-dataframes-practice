@@ -12,19 +12,9 @@ class ColumnDataFrameTransformer(ColumnTransformer):
     transformer will be concatenated to form a single feature space. This is
     useful for DataFrame data, to combine several feature extraction mechanisms
      or transformations into a single transformer.
-    .. versionadded:: 0.0.1"""
+    .. versionadded:: 0.0.1
 
-    def __init__(
-        self,
-        transformers: List[Tuple[str, ...]],
-        remainder: str = "drop",
-        n_jobs: Optional[int] = None,
-        transformer_weights: Optional[dict] = None,
-        verbose: bool = False,
-        verbose_feature_names_out: bool = True,
-    ):
-        """Initializes the transformer.
-        Args:
+    Attributes:
             - transformers (List[Tuple[str, ...]]): List of (name, transformer,
             columns) tuples specifying the transformer objects to be applied
             to subsets.
@@ -41,7 +31,17 @@ class ColumnDataFrameTransformer(ColumnTransformer):
             `get_feature_names_out` will prefix all feature names with the
             name of the transformer that generated that feature. Defaults to
             True.
-        """
+    """
+
+    def __init__(
+        self,
+        transformers: List[Tuple[str, ...]],
+        remainder: str = "drop",
+        n_jobs: Optional[int] = None,
+        transformer_weights: Optional[dict] = None,
+        verbose: bool = False,
+        verbose_feature_names_out: bool = True,
+    ):
         super().__init__(
             transformers,
             remainder=remainder,
