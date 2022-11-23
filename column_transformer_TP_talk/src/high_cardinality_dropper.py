@@ -1,4 +1,3 @@
-"""Module to drop nan columns in the input data."""
 from typing import List
 
 import pandas as pd

@@ -1,4 +1,3 @@
-"""Module to replace some values in the input data."""
 from typing import Dict
 
 import pandas as pd
