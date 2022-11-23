@@ -5,3 +5,5 @@ sckit-learn
 feature-engine
 lightgbm
 notebook
+seaborn
+matplotlib
